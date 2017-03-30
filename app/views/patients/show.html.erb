@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<!-- this class defines what is displayed for each Patient -->
+
+<table class="table table-hover table-striped table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date of birth</th>
+      <th>Address</th>
+      <th>Phone number</th>
+      <th>Infection</th>
+      <th>Injury</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @patient.Name %></td>
+        <td><%= @patient.Date_of_Birth %></td>
+        <td><%= @patient.Address %></td>
+        <td><%= @patient.Phone_Number %></td>
+        <td><%= @patient.Infection %></td>
+        <td><%= @patient.Injury %></td>
+      </tr>
+  </tbody>
+</table>
+
+<h2>Requests</h2>
+<% @patient.requests.each do |request| %>
+<p>
+<b>Request details:</b>
+    <%= request.details %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_patient_path(@patient), class: "btn btn-default" %> 
+<%= link_to 'Back', patients_path, class: "btn btn-default" %>
+<%= link_to 'Show Requests', patient_requests_path(@patient), class: "btn btn-default" %>
+
+
+
+
