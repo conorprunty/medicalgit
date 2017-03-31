@@ -18,10 +18,10 @@ class PatientsController < ApplicationController
     if params[:search]
 #        @patients = Patient.search(params[:search]).order("created_at DESC")
         @patients = Patient.search(params[:search])
-        @patients = @patients.order("Name ASC")
+        @patients = @patients.order("created_at ASC")
   else
 #        @patients = Patient.all.order('created_at DESC')
-        @patients = @patients.order("Name DESC")
+        @patients = @patients.order("created_at DESC")
   end
   end
 
