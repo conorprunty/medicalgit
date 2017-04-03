@@ -29,6 +29,12 @@ class PatientsController < ApplicationController
   # GET /patients/1.json
   def show
   end
+    
+    #http://railscasts.com/episodes/228-sortable-table-columns
+    helper_method :sort_column, :sort_direction
+  def index
+    @patients = Patient.order(sort_column + " " + sort_direction)
+  end
 
   # GET /patients/new
   def new
