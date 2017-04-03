@@ -106,7 +106,7 @@ class PatientsController < ApplicationController
     #http://railscasts.com/episodes/228-sortable-table-columns
      private
   def sort_column
-    Patient.column_names.include?(params[:sort]) ? params[:sort]: "name"
+    Patient.column_names.include?(params[:sort]) ? params[:sort]: " \"patients\".\"Name\" "
   end
 
   def sort_direction
