@@ -13,16 +13,18 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   # http://www.korenlc.com/creating-a-simple-search-in-rails-4/
+    helper_method :sort_column, :sort_direction
   def index
     @patients = Patient.all
+      @patients = Patient.order(sort_column + " " + sort_direction)
     if params[:search]
 #        @patients = Patient.search(params[:search]).order("created_at DESC")
         @patients = Patient.search(params[:search])
         @patients = @patients.order("created_at ASC")
-  else
+    else
 #        @patients = Patient.all.order('created_at DESC')
         @patients = @patients.order("created_at DESC")
-  end
+    end
   end
 
   # GET /patients/1
@@ -30,11 +32,11 @@ class PatientsController < ApplicationController
   def show
   end
     
-    #http://railscasts.com/episodes/228-sortable-table-columns
-    helper_method :sort_column, :sort_direction
-  def index
-    @patients = Patient.order(sort_column + " " + sort_direction)
-  end
+#    #http://railscasts.com/episodes/228-sortable-table-columns
+#    helper_method :sort_column, :sort_direction
+#  def index
+#    @patients = Patient.order(sort_column + " " + sort_direction)
+#  end
 
   # GET /patients/new
   def new
