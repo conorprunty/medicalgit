@@ -102,4 +102,14 @@ class PatientsController < ApplicationController
     def patient_params
       params.require(:patient).permit(:Name, :Date_of_Birth, :Address, :Phone_Number, :Infection, :Injury)
     end
+    
+    #http://railscasts.com/episodes/228-sortable-table-columns
+     private
+  def sort_column
+    Patient.column_names.include?(params[:sort]) ? params[:sort]: "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] :"asc"
+  end
 end
